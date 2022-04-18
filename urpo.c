@@ -1,11 +1,7 @@
-#include <sys/types.h>
-#include <sys/wait.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <stdbool.h>
 #include <inttypes.h>
-#include <stdint.h>
 #include <err.h>
 #include <string.h>
 
@@ -53,8 +49,6 @@ int main(int argc, char **argv)
 	}
 	memset(canvas, 0xff, canvas_len);
 
-	//printf("allokoitiin kangas %ld %ld\n", width, height);
-
 	long tick = 0;
 	long line = 0;
 	
@@ -94,7 +88,6 @@ int main(int argc, char **argv)
 		if (c != '\n') {
 			errx(2, "Line %ld: Not enough data", line);
 		}
-		//printf("line %ld: pix %d,%d\n", line, x, y);
 	}
 	dump_frame(canvas, canvas_len);
 }
