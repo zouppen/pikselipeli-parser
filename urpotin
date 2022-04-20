@@ -2,7 +2,7 @@
 
 width=512
 height=512
-fps=10 # Timelapse frames per seconds
+fps=30 # Timelapse frames per seconds
 spf=10 # Seconds in real time per frame
 scale=4 # Scaling factor for output video, multiplier for width & height
 
