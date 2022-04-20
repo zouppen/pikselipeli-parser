@@ -2,8 +2,9 @@
 
 width=512
 height=512
-fps=10 # Timelapse frames per seconds
+fps=30 # Timelapse frames per seconds
 spf=10 # Seconds in real time per frame
+scale=4 # Scaling factor for output video, multiplier for width & height
 
 colors="`dirname $0`/colors.list"
 urpo="`dirname $0`/urpo"
@@ -15,4 +16,4 @@ fi
 
 jq --slurpfile c "$colors" -Rr 'capture("(?<ts>[0-9]*) Received request: (?<json>.*)") | .+ (.json | fromjson) | [.ts, .X, .Y] + ($c[.colorID | tonumber] // error("Unknown color " + .colorID)) | @tsv' <"$1" |
     "$urpo" "$width" "$height" "$spf" |
-    ffmpeg -f rawvideo -pixel_format rgb24 -video_size "${width}x${height}" -framerate "$fps" -i - "$2"
+    ffmpeg -f rawvideo -pixel_format rgb24 -video_size "${width}x${height}" -framerate "$fps" -i - -vf scale=iw*"$scale":ih*"$scale":flags=neighbor "$2"
