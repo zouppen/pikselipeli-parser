@@ -5,7 +5,7 @@ height=512
 fps=10 # Timelapse frames per seconds
 spf=10 # Seconds in real time per frame
 
-colors="`dirname $0`/colors.json"
+colors="`dirname $0`/colors.list"
 urpo="`dirname $0`/urpo"
 
 if test $# -ne 2; then
