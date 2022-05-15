@@ -65,7 +65,9 @@ int main(int argc, char **argv)
 
 		// Validate input
 		if (x < 0 || x >= width || y < 0 || y >= height) {
-			errx(2, "Line %ld: Invalid coordinates: %d,%d", line, x, y);
+			fprintf(stderr, "Line %ld: Invalid coordinates: %d,%d \n", line, x, y);
+			scanf("%*[^\n]\n"); // Skip line
+			continue;
 		}
 		pixel_t *pix = canvas + width * y + x;
 
